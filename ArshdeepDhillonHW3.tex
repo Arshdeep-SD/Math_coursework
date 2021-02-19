@@ -1,0 +1,137 @@
+\documentclass[11pt,letter paper]{report}
+\usepackage{amssymb,amsfonts,amsmath,color,graphicx}
+\usepackage{tikz} 
+
+\voffset=-3cm
+\hoffset=-2.25cm
+\textheight=24cm
+\textwidth=17.25cm
+
+\begin{document}
+\noindent{\em Arshdeep Dhillon \hfill{August 26, 2019}}
+
+\begin{center}
+{\bf \Large Homework 3} 
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+%
+\section*{Problem Set 5}
+
+%%
+\subsection*{Problem 1}
+A worker has asked her supervisor for a letter of recommendation for a new job. She estimates that there is an $80\%$ chance that she will get the job if she receives a strong recommendation, a $40\%$ chance if she receives a moderately good recommendation, and a $10\%$ chance if she receives a weak recommendation. She further estimates that the probabilities that the recommendation will be strong, moderate, and weak are $0.7$, $0.2$, and $0.1$, respectively.
+\begin{itemize}
+\item[a.] How certain is she that she will receive the new job offer? 
+\item[b.] Given that she does receive the offer, how likely should she feel that she received a strong recommendation? A moderate recommendation? A weak recommendation?
+\item[c.] Given that she does not receive the job offer, how likely should she feel that she received a strong recommendation? A moderate recommendation? A weak recommendation?
+\end{itemize}
+{\bf \underline{Solution}}:\\ 
+Let $S$ be the event that a strong recommendation is given, $M$ be the event that a moderate recommendation is given and $W$ be the event a  weak recommendation. $E$ be the event she gets the job. 
+\begin{itemize}
+\item[a.] The sample space is partitioned into $3$ subsets, using Bayes' formula, 
+$$P(E)=P(E\mid S)P(S)+P(E\mid M)P(M)+P(E\mid W)P(W)$$
+$$\implies P(E)=(0.8\times 0.7)+(0.4\times 0.2)+(0.1\times 0.1)$$
+$$\therefore P(E)=\underline{\underline{0.65}}$$
+\item[b.] Using the definition of conditional probability, 
+$$P(S\mid E)=\frac{(0.8\times 0.7)}{P(E)}=\underline{\underline{\frac{56}{65}}}$$
+$$P(M\mid E)=\frac{(0.4\times 0.2)}{P(E)}=\underline{\underline{\frac{8}{65}}}$$
+$$P(W\mid E)=\frac{(0.1\times 0.1)}{P(E)}=\underline{\underline{\frac{1}{65}}}$$
+\item[c.] Using the definition of conditional probability, 
+$$P(S\mid E^c)=\frac{((1-0.8)\times 0.7)}{1-P(E)}=\underline{\underline{\frac{14}{35}}}$$
+$$P(M\mid E^c)=\frac{((1-0.4)\times 0.2)}{1-P(E)}=\underline{\underline{\frac{12}{35}}}$$
+$$P(W\mid E^c)=\frac{((1-0.1)\times 0.1)}{1-P(E)}=\underline{\underline{\frac{9}{35}}}$$
+\end{itemize}
+
+%%
+\subsection*{Problem 2}
+Barbara and Dianne go target shooting. Suppose that each of Barbara's shots hits a wooden duck target with probability $p_1$, while each shot of Dianne's hits it with probability $p_2$. Suppose that they shoot simultaneously at the same target. If the wooden duck is knocked over (indicating that it was hit), what is the probability that
+\begin{itemize}
+\item[a.] both shots hit the duck?
+\item[b.] Barbara's shot hit the duck?
+\end{itemize}
+{\bf \underline{Solution}}:\\
+Let $B$ be the event that Barbara's shot hit and $D$ be the event that Dianne's shot hits. As both these events are independent $P(B\cap D)=p_1p_2$.
+\begin{itemize}
+\item[a.] The probability that at least one shot hits given that the target is knocked over, 
+$$P(B\cup D)=P(B)+P(D)+P(B\cap D)=p_1+p_2+p_1p_2$$
+$$\implies P(B\cap D\mid B\cup D)=\underline{\underline{\frac{p_1p_2}{p_1+p_2+p_1p_2}}}$$
+\item[b.] The probability that Barbara's shot knocked over the target given that the target is knocked over,
+$$P(B\mid B\cup D)=\underline{\underline{\frac{p_1}{p_1+p_2+p_1p_2}}}$$
+\end{itemize}
+
+%%
+\subsection*{Problem 5}
+Independent trials that result in a success with probability $p$ are successively performed until a total of $r$ successes is obtained. Show that the probability that exactly $n$ trials are required is $$\binom{n-1}{r-1}p^r(1-p)^{n-r}$$
+{\bf \underline{Solution}}:\\
+If the experiment has to be have $r$ successes in exactly $n$ trails then the last trail has to yield a success as if we get $r$ successes before the $n^{th}$ trail then the condition is not met. Therefore, we are only free to distribute $r-1$ successes over $n-1$ trials as the last trial has a fixed outcome. The number of ways to select $r-1$ positions form $n-1$ positions is given by $\binom{n-1}{r-1}$ and as all trails are independent events the probability of getting $r$ successes in $n$ trials means that there were $n-r$ failures, therefore, the probability of each such instance is $p^r\times (1-p)^{n-r}$.\\
+Therefore, the total probability is $\underline{\underline{\dbinom{n-1}{r-1}p^r(1-p)^{n-r}}}$.
+
+%%
+\subsection*{Problem 9}
+Extend the definition of conditional independence to more than $2$ events.\\[0.1cm]
+{\bf \underline{Solution}}:\\
+Let $Q(E)$ be the probability of an event $E$ given that previously an event $F$ already occurred. As $Q(E)$ is a well defined probability function, using the definition of independence for more than two events, 
+$$Q(E_1\cap E_2\cap ...E_n)=Q(E_1)\times Q(E_2)\times ...Q(E_n)$$
+As $Q(E)=E(E\mid F)$, this can be rewritten as, 
+$$P(E_1\cap E_2\cap ...E_n\mid F)=P(E_1\mid F)\times P(E_2\mid F)\times ...P(E_n\mid F)$$
+
+%
+\section*{Problem Set 6}
+
+%%
+\subsection*{Problem 2}
+Let $X$ represent the difference between the number of heads and the number of tails obtained when a coin is tossed $n$ times. What are the possible values of $X$?\\[0.1cm]
+{\bf \underline{Solution}}:\\
+Let $h$ be the number of heads and $t$ be the number of heads obtained when a coin is tosses $n$ times. As there are $n$ tosses and the each toss can either be heads or tails, $n=h+t$. Therefore, 
+$$X=h-t\implies X=n-2t$$
+As $t$ can take all values from $0$ to $n$ the values of $X$ range from $-n$ to $n$ increments of $2$. 
+$$X\in \lbrace-n,-n+2,-n+4...n-2,n\rbrace$$
+
+%%
+\subsection*{Problem 4}
+Suppose that the distribution function $X$ of a random variable is given by
+$$F_X(x)=
+\begin{cases}
+0,& x<0,\\
+\frac{x}{4},& 0\leq x<1,\\
+\frac{1}{2}+\frac{x-1}{4},& 1\leq x<2,\\
+\frac{11}{12},&2\leq x<3,\\
+1,&3\leq x.
+\end{cases}$$
+Find $P(X=i)$ for $i=1,2,3$ and $P(\frac{1}{2}<X<\frac{3}{2})$.\\[0.1cm]
+{\bf \underline{Solution}}:\\
+$P(X)=F_X'(x)$ when the function is continuous, therefore, for\\
+$P(X=1)=\underline{\underline{\frac{1}{4}}}$\\
+As $F_X(x)$ is not continuous at $2$and $3$, $P(X)=F_X(b)-lim_{x\to b^-}F_X(x)$, therefore, for\\
+$P(X=2)=\frac{11}{12}-\frac{1}{4}=\underline{\underline{\dfrac{1}{4}}}$\\
+$P(X=3)=1-\frac{11}{12}=\underline{\underline{\dfrac{1}{12}}}$\\
+$P(a<X<b)=F_X(b)-F_X(a)$, therefore,\\ 
+$P(\frac{1}{2}<X<\frac{3}{2})=\frac{5}{8}-\frac{1}{8}=\underline{\underline{\dfrac{1}{2}}}$
+
+%%
+\subsection*{Problem 7}
+A box contains 5 red and 5 blue marbles. Two marbles are withdrawn randomly. If they are of the same color, then you win $\$1.10$. If they are of different colors, then you loose $\$1.00$. Calculate
+\begin{itemize} 
+\item[a.] the expected value of the amount you win.
+\item[b.] the variance of the amount you win.
+\end{itemize}
+{\bf \underline{Solution}}:\\
+Let $X$ be the random variable that represents the value of the amount of money earned.\\
+The number of ways getting balls of the same color $=2\binom{5}{2}$, the number of ways of getting one ball of each color $=\binom{5}{1}\times \binom{5}{1}$, the total number of ways of drawing $2$ balls $=\binom{10}{2}$. Therefore, the probability of getting two balls of the same color $=\frac{4}{9}$ and the probability of one ball of each color $=\frac{5}{9}$. 
+\begin{itemize} 
+\item[a.] $E(X)=(1.1\times \frac{4}{9})+((-1)\times \frac{5}{9})=\underline{\underline{\dfrac{-1}{15}}}$
+\item[b.] $Var(X)=(1.1^2\times \frac{4}{9})+((-1)^2\times \frac{5}{9})-E(X)^2=\underline{\underline{\dfrac{49}{45}}}$
+\end{itemize}
+
+%%
+\subsection*{Problem 9}
+Let $X$ be a random variable having expected value $\mu$ and variance $\sigma^2$. Find the expected value and variance of $$Y=\frac{X-\mu}{\sigma}$$
+{\bf \underline{Solution}}:\\
+As $E(aX+b)=aE(X)+b$,(lecture 16)
+$$E(Y)=\frac{E(X)}{\sigma}-\frac{\mu}{\sigma}=\underline{\underline{\frac{E(X)-\mu}{\sigma}}}$$
+As $Var(aX+b)=a^2Var(X)$,(lecture 16) 
+$$Var(Y)=\underline{\underline{\frac{Var(X)}{\sigma^2}}}$$
+
+\end{document}

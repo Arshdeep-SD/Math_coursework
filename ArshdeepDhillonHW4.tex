@@ -1,0 +1,169 @@
+\documentclass[11pt,letter paper]{report}
+\usepackage{amssymb,amsfonts,amsmath,color,graphicx}
+\usepackage{tikz} 
+
+\voffset=-3cm
+\hoffset=-2.25cm
+\textheight=24cm
+\textwidth=17.25cm
+
+\begin{document}
+\noindent{\em Arshdeep Dhillon \hfill{September 4, 2019}}
+
+\begin{center}
+{\bf \Large Homework 4} 
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+%
+\section*{Problem Set 7}
+
+%%
+\subsection*{Problem 1}
+If $E[X]=1$ and $Var(X)=5$, find
+\begin{itemize}
+\item[a.] $E[(2+X)^2]$
+\item[b.] $Var(4+3X)$
+\end{itemize}
+{\bf \underline{Solution}}: 
+\begin{itemize}
+\item[a.] $E[(2+X)^2]=E[(4+4X+X^2]=E[4+4X]+E[X^2]$, $E[aX+b]=aE[X]+b$ \it{from lecture 16}\\
+$E[(2+X)^2]=4+4E[X]+Var[X]=4+4+5=\underline{\underline{13}}$
+\item[b.] $Var(4+3X)=3^2Var(X)=\underline{\underline{45}}$, $Var[aX+b]=a^2Var(X)$ \it{from lecture 16}
+\end{itemize}
+
+%%
+\subsection*{Problem 6}
+Let $X$ be a binomial random variable with parameters $n$ and $p$. Show that $$E[\frac{1}{1+X}]=\frac{1-(1-p)^{n+1}}{(n+1)p}$$
+{\bf \underline{Solution}}:\\
+By the definition of expectation of a random variable $X$,
+\begin{flalign*}
+E[\frac{1}{1+X}] &=\sum_{k=0}^n\frac{1}{k+1}\binom{n}{k}p^k(1-p)^{n-k} \text{  as, } p_X(i)=\binom{n}{i}p^i(1-p)^{n-i} &\\
+&=\sum_{k=0}^n\frac{n!}{(n-k)!(k+1)!)}p^k(1-p)^{n-k} &\\
+&=\frac{1}{(n+1)p}\sum_{k=0}^n\frac{(n+1)!}{(n-k)!(k+1)!}p^{k+1}(1-p)^{n-k}=\frac{1}{(n+1)p}\sum_{k=0}^n\binom{n+1}{k}p^{k+1}(1-p)^{n-k} &\\
+&=\frac{1}{(n+1)p}[\sum_{k=0}^{n+1}\binom{n+1}{k}p^{k+1}(1-p)^{n+1-k}-(1-p)^{n+1}] &\\
+&\text{by Binomial theorem }\sum_{k=0}^n=\binom{n}{i}p^i(1-p)^{n-i}=1 &\\
+&\therefore E[\frac{1}{1+X}]=\frac{1-(1-p)^{n+1}}{(n+1)p} &
+\end{flalign*}
+
+%%
+\subsection*{Problem 9}
+Let $X$ be a Poisson random variable with parameter $\lambda$. What value of $\lambda$ maximizes $(P(X=k)$, $k\ge 0$?\\[0.1cm]
+{\bf \underline{Solution}}:
+$$P((X=k))=p_X(k)=\frac{\lambda^k}{k!}e^{-\lambda}\, k\ge 0k$$
+Writing $p_X(k)$ as a function of lambada, 
+$$f(\lambda)=\frac{\lambda^k}{k!}e^{-\lambda}\, \exists k\in \mathbb{N}, k\ge0$$
+The critical points of $f(\lambda)$ are the solutions to $f'(\lambda)=0$. 
+$$f'(\lambda)=\frac{1}{k!}[k\lambda^{k-1}e^{-\lambda}-\lambda^ke^{-\lambda}] \text{  by Chain rule}$$
+$$\therefore f'(\lambda)=0\to \frac{1}{k!}[k\lambda^{k-1}e^{-\lambda}-\lambda^ke^{-\lambda}]=0$$
+$$\implies \lambda=k$$
+To check whether a given critical point $X$ is a maxima $f''(X)<0$,
+$$f''(\lambda)=\frac{1}{k!}(k[(k-1)\lambda^{k-2}e^{-\lambda}-\lambda^{k-1}e^{-\lambda}]-f'(\lambda))$$
+at $\lambda=k$
+$$f''(k)=\frac{e^{-k}}{k!}[(k-1)k^{k-1}-k^{k}]\implies f''(k)<0 \text{  as,}(k-1)k^{k-1}<k^k$$
+$$\therefore f''(k)<0 $$
+Therefore, $(P(X=k)$ is maximum when $\lambda=\underline{\underline{k}}$.
+
+%%
+\subsection*{Problem 10}
+Show that $X$ is a Poisson random variable with parameter $\lambda$, then $$E[X^n]=\lambda E[(X+1)^{n-1}]$$
+Compute $E[X^3]$.\\[0.1cm]
+{\bf \underline{Solution}}:\\
+By the definition of expectation of a random variable $X$,
+\begin{flalign*}
+E[X^n] &=\sum_{k\in \mathbb{N}}k^n\frac{\lambda^k}{k!}e^{-\lambda} \text{  as, } p_X(i)=\frac{\lambda^i}{i!}e^{-\lambda} &\\
+&=\lambda\sum_{k\in \mathbb{N}}k^{n-1}\frac{\lambda^{k-1}}{(k-1)!}e^{-\lambda} &\\
+&\sum_{k\in \mathbb{N}}k^{n-1}\frac{\lambda^{k-1}}{(k-1)!}e^{-\lambda} \text{ represents the expected value of the random variable }(X+1)^{n-1} &\\
+&\therefore E[X^n]=\lambda E[(X+1)^{n-1}] &
+\end{flalign*}
+Using this result, 
+\begin{flalign*}
+E[X^3] &=\lambda E[(X+1)^2] &\\
+&=\lambda E[X^2+2X+1] &\\
+&=\lambda(E[X^2]+2E[X]+1) \text{  as, } E[1]=1 &\\
+&=\lambda(E[X^2]+2\lambda+1) \text{  as, } E[X]=\lambda \text{ (Poisson Distribution)} &\\
+&=\lambda(\lambda(\lambda+1)+2\lambda+1) \text{  as, } E[X^2]=\lambda E[X+1] \text{ (Poisson Distribution)} &\\
+&=\lambda^3+3\lambda^2+\lambda &\\
+\end{flalign*}
+$$\therefore E[X^3]=\underline{\underline{\lambda^3+3\lambda^2+\lambda}}$$
+
+%
+\section*{Problem Set 8}
+
+%%
+\subsection*{Problem 1}
+The lifetime in hours of an electronic tube is a random variable having a probability density function given by 
+$$f(x)=\begin{cases}
+0,& x<0\\
+xe^{-x},& x\geq 0
+\end{cases}$$
+Compute the expected lifetime of such a tube.\\[0.1cm]
+{\bf \underline{Solution}}:\\
+Let $X$ be a random variable that denotes the number of number of hours that the electronic tube is alive. The probability that a randomly selected tube will be functional for $x_0$ hours is given by the probability density function $f(x)$. Therefore, 
+$$p_X(x_0)=f(x_0)=x_0e^{-x_0}$$
+Using the definition of expected value of a random variable, 
+$$E[X]=\int_{-\infty}^{\infty}xp_X(x)dx=\int_{-\infty}^{\infty}x^2e^{-x}dx$$
+$$\implies E[X]=\int_0^{\infty}x^2e^{-x}dx=2$$
+Therefore, the expected lifetime of one of these electronic tubes chosen randomly is \underline{\underline{$2$}} hours.
+
+%%
+\subsection*{Problem 2}
+A point is chosen at random on a line segment of length $L$. Interpret this statement, and find the probability that the ratio of the shorter to the longer segment is less than $\frac{1}{4}$.\\[0.1cm]
+{\bf \underline{Solution}}:\\
+When a point on the line segment is chosen, it can be thought that it is divided into two segments of lengths $x\le L$ and $(1-x)L$. Random variable $X$ can be defined as length of the segment that is created when a point is chosen at random and one end of the original line segment. As all points are equally likely to be selected $X$ is uniformly distributed in $[0,L]$, as the chosen point must lie on the line segment. 
+As the ratio of the shorter to the longer segment must be found the fraction must be flipped when the ration becomes greater than $1$, as then the other part of the segment is shorter. The ratio of the two lengths is $1$ is when the point chosen bisects the line segment and the value of $X$ at this point is $\frac{L}{2}$. 
+The ratio of the two lengths can be represented as follows,
+$$r(X)=\begin{cases}
+\dfrac{X}{1-X},& 0\le X\le \frac{L}{2}\\
+\dfrac{1-X}{X},& L\ge X\ge \frac{L}{2}\\
+\end{cases}$$
+The cases when the ratio of the shorter length to the longer length is less than $\frac{1}{4}$ are, 
+$$r(X)<\frac{1}{4}\implies X\in [0,\frac{L}{5}) \cup (\frac{4L}{5}, L]$$
+Therefore the probability that $r(X)<\frac{1}{4}$ is given by, 
+$$P(0\le X<\frac{L}{5})+P(\frac{4L}{5}<X\le L)=\int_0^{\frac{L}{4}}\frac{1}{L-0}dx+\int_{\frac{4L}{5}}^L\frac{1}{L-0}dx=2\frac{1}{5}$$
+$$\therefore P(X\in [0,\frac{L}{5}) \cup (\frac{4L}{5}, L)=\underline{\underline{\frac{2}{5}}}$$
+
+%%
+\subsection*{Problem 9}
+Show that, if $Z$ is a standard normal random variable, then, for $x>0$
+\begin{itemize}
+\item[a.] $P(Z>x)=P(Z<-x)$
+\item[b.] $P(\lvert Z\rvert>x)=2P(Z>x)$
+\item[c.] $P(\lvert Z\rvert<x)=2P(Z<x)-1$
+\end{itemize}
+{\bf \underline{Solution}}:\\
+If a normal distribution is said to be 'standard' then it is known that (mean)$\mu=0$ and (variance)$\sigma^2=1$. Therefore the probability density function can be written as follows, 
+$$p_Z(z)=\dfrac{e^{\frac{-z^2}{2}}}{\sqrt{2\pi}}\implies P(Z\le x)=\int_{-\infty}^xp_Z(z)dz=P(Z\ge -x)=\int_{-x}^{\infty}p_Z(z)dz$$
+\begin{itemize}
+\item[a.] $P(Z>x)=1-P(Z\le x)$\\
+$\implies P(Z>x)=1-P(Z\ge -x)$\\
+$\implies P(Z>x)=(Z<-x)$, hence proven.
+\item[b.] $P(\lvert Z\rvert>x)\to P(Z>x)$ or $P(Z<-x)$\\
+$\implies P(\lvert Z\rvert>x)=P(Z>x)+P(Z<-x)=2P(Z>x)$, as shown in 'a.'\\
+$\therefore P(\lvert Z\rvert>x)=2P(Z>x)$, hence proven.
+\item[c.] $P(\lvert Z\rvert<x)\to P(Z<x)$ and $P(Z>-x)$\\
+$\implies P(\lvert Z\rvert>x)=P(Z>x>-Z)=1-P(\lvert Z\rvert>x)=2P(Z>x)$\\
+$\implies P(\lvert Z\rvert>x)=1-2P(Z>x)=1-2(1-P(Z<x))$\\
+$\therefore P(\lvert Z\rvert>x)=2P(Z<x)$, hence proven.
+\end{itemize}
+
+%%
+\subsection*{Problem 10}
+The median of a continuous random variable having distribution function $F$ is that value $m$ such that $F(m)=1/2$. That is, a random variable is just as likely to be larger than its median as it is to be smaller. Find the median of $X$ if $X$ is
+\begin{itemize}
+\item[a.] uniformly distributed over an interval $(a,b)$.
+\item[b.] normal with parameters $\mu$ and $\sigma^2$.
+\item[c.] exponential with rate $\lambda$.
+\end{itemize}
+{\bf \underline{Solution}}:
+\begin{itemize}
+\item[a.] The distribution function of a uniformly distributed random variable for $x\in (a,b)$ is $F(x)=\frac{x}{b-a}$. At the median $m$, the value of this function is $\frac{1}{2}$. Therefore, 
+$$F(m)=\frac{m}{b-a}=\frac{1}{2}\implies m=\underline{\underline{\frac{b-a}{2}}}$$
+\item[b.] The normal distribution function is symmetric around the point $x=\mu$, therefore, $P(X<\mu)=P(X>\mu)$(also from Problem 9 'a.'), and $P(X<\mu)+P(>\mu)=1$. 
+$$\therefore P(X<\mu)=\frac{1}{2}\implies \text{median }m=\underline{\underline{\mu}}$$  
+\item[c.] The distribution function of a exponentially distributed random variable for $x\ge 0$ is $F(x)=\int_0^x\lambda e^{-\lambda x}dx=1-e^{-\lambda x}$. At the median $m$, the value of this function is $\frac{1}{2}$. Therefore, 
+$$F(m)=1-e^{-\lambda m}=\frac{1}{2}\implies m=\underline{\underline{\frac{\ln{2}}{\lambda}}}$$
+\end{itemize}
+
+\end{document}

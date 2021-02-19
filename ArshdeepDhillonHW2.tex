@@ -1,0 +1,121 @@
+\documentclass[11pt,letter paper]{report}
+\usepackage{amssymb,amsfonts,amsmath,color,graphicx}
+\usepackage{tikz} 
+
+\voffset=-3cm
+\hoffset=-2.25cm
+\textheight=24cm
+\textwidth=17.25cm
+
+\begin{document}
+\noindent{\em Arshdeep Dhillon \hfill{August 19, 2019}}
+
+\begin{center}
+{\bf \Large Homework 2} 
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+%
+\section*{Problem Set 3}
+
+%%
+\subsection*{Problem 1}
+If $8$ identical computers are to be divided among $4$ lab rooms, how many divisions are possible? How many if each room must receive at least $1$ computer?\\[0.1cm]
+{\bf \underline{Solution}}:\\ 
+Distributing $8$ computers among $4$ labs is the same as grouping $8$ computers into $4$ distinct groups, we know that if we want to distribute $n$ objects into $m$ groups there are $\binom{n+m-1}{m-1}$ possible groupings. In this case $n=8, m=4$, therefore the total number of ways to group $8$ computers into $4$ distinct groups is $\binom{8+4-1}{4-1}=\binom{11}{3}=\underline{\underline{165}}$.\\
+If there needs to be at least one computer in each lab then, we first distribute one computer to each lab, and as all the computers are indistinguishable there is only $1$ way to do this. Once each lab has one computer we can just distribute the remaining computers in a similar manner as before. As $4$ of the $8$ total computers have already been distributed we just need to distribute the remaining $4$ computers into the $4$ labs. Using the same formula as before, the total number of ways in which $4$ computers can be grouped into $4$ distinct groups is $\binom{4+4-1}{4-1}=\binom{7}{3}=\underline{\underline{35}}$.
+
+%%
+\subsection*{Problem 3}
+Prove that
+\begin{center}
+$\dbinom{n+m}{r}=\dbinom{n}{0}\dbinom{m}{r}+\dbinom{n}{1}\dbinom{m}{r-1}+\cdot\cdot\cdot\cdot+\dbinom{n}{r}\dbinom{m}{0}$
+\end{center}
+by connecting the formula to a concrete situation (i.e. interpreting its meaning). Show that the formula implies
+\begin{center}
+$\dbinom{2n}{n}=\dbinom{n}{0}^2+\dbinom{n}{1}^2+\cdot\cdot\cdot\cdot+\dbinom{n}{n}^2$
+\end{center}
+{\bf \underline{Solution}}:\\
+Let us consider a set of $n+m$ objects, to select $r$ objects from this set the total number of ways to to do this are known to be $\binom{n+m}{r}$. But instead of this being a group of $n+m$ objects, we can also consider two sets of $n$ and $m$ objects each. From these two sets if we wish to choose $r$ objects, we must first choose $i$ objects from the first set and then choose the remaining $r-i$ objects from the other set, the value of $i$ can range from $0$ to $r$ as we can choose all the objects from only one set or some from one and some from the other. As all the different values of $i$ are separate cases we can say that the total number of ways to select $r$ objects from two sets of $n$ and $m$ objects is $\sum^r_{i=0}\binom{n}{i}\binom{m}{r-i}$.\\
+As these two cases are the same selection done in two different ways their values must be equal.$$\therefore\dbinom{n+m}{r}=\sum^r_{i=0}\binom{n}{i}\binom{m}{r-i}$$
+In the special case where $n=m=r$, we can rewrite the formula as the following:$$\binom{2n}{n}=\sum^n_{i=0}\binom{n}{i}\binom{n}{n-i}$$
+And as we know, $\binom{n}{m}=\binom{n}{n-m}$, this formula can be rewritten as, $$\binom{2n}{n}=\sum^n_{i=0}\binom{n}{i}^2$$
+
+%%
+\subsection*{Problem 7}
+A retail establishment accepts either the American Express or the VISA credit card. A total of $24\%$ of its customers carry an American Express card, $61\%$ carry a VISA card, and $11\%$ carry both cards. What percentage of its customers carry a credit card that the establishment will accept?\\[0.1cm]
+{\bf \underline{Solution}}:\\
+Let $A$ be the event that the customer carries an American Express card and $E$ be the event that the customer carries a Visa card. We know that $P(A\cup V)=P(A)+P(V)-P(A\cap V)$, and we are given the values of $P(A)=0.24$, $P(V)=0.61$ and $P(A\cap V)=0.11$. We are told that the establishment accepts both cards so our goal is to find the probability that a customer is carrying at least one of these cards, i.e. $P(A\cup V)$. Using the formula we stated we can see that $P(A\cup V)=0.24+0.61-0.11=0.74$, therefore \underline{\underline{$74\%$}} of the customers carry a card that the establishment accepts. 
+
+%%
+\subsection*{Problem 9}
+Prove that
+\begin{center}
+$P(E\cap F^c)=P(E)-P(E\cap F)$
+\end{center}
+{\bf \underline{Solution}}:\\
+By Bayes' formula we know that, $$P(E)=P(E\mid F)P(F)+P(E\mid F^c)P(F^c)$$
+And by the definition of conditional probability we know, $$P(E\mid F)=\frac{P(E\cap F)}{P(F)}$$
+Substituting the definition of conditional probability into Bayes' formula we get, $$P(E)=P(E\cap F)+P(E\cap F^c)$$
+Rearranging this we get, $$P(E\cap F^c)=P(E)-P(E\cap F)$$ 
+
+%
+\section*{Problem Set 4}
+
+%%
+\subsection*{Problem 1}
+If two fair dice are rolled, what is the conditional probability that the first one lands on $6$ given that the sum of the dice is $i$ for $i=1,2,...,12$?\\[0.1cm]
+{\bf \underline{Solution}}:\\
+For $i\le 6$ the probability of the first die landing on $6$ is \underline{\underline{$0$}} as if the first die landed at six the sum must be at least $7$ as there are no non-positive numbers on the face of a fair die.\\ 
+For $i=7$, there are six possible outcomes out of which only $1$ has six appearing on the first die. Therefore the probability is \underline{\underline{$\frac{1}{6}$}}.\\
+For $i=8$, there are five possible outcomes out of which only $1$ has six appearing on the first die. Therefore the probability is \underline{\underline{$\frac{1}{5}$}}.\\
+For $i=9$, there are four possible outcomes out of which only $1$ has six appearing on the first die. Therefore the probability is \underline{\underline{$\frac{1}{4}$}}.\\
+For $i=10$, there are three possible outcomes out of which only $1$ has six appearing on the first die. Therefore the probability is \underline{\underline{$\frac{1}{3}$}}.\\
+For $i=11$, there are two possible outcomes out of which only $1$ has six appearing on the first die. Therefore the probability is \underline{\underline{$\frac{1}{2}$}}.\\
+For $i=7$, there is only one possible outcome, both dice have six appearing on them. Therefore the probability is \underline{\underline{$1$}}.
+
+%%
+\subsection*{Problem 4}
+In a certain community, $36\%$ of the families own a dog and $22\%$ of the families that own a dog also own a cat. In addition, $30\%$ of the families own a cat. What is
+\begin{itemize}
+\item[a.] the probability that a randomly selected family owns both a dog and a cat?
+\item[b.] the conditional probability that a randomly selected family owns a dog given that it owns a cat?
+\end{itemize}
+{\bf \underline{Solution}}:\\
+Let $D$ be the event that a family owns dog and $C$ the event a family owns a cat, we know that $P(D)=0.36$, $P(C\mid D)=0.22$ and $P(C)=0.30$. 
+\begin{itemize}
+\item[a.] By the definition of conditional probability we have,\\
+$P(C\mid D)=\frac{P(C\cap D)}{P(D)}\implies P(C\cap D)=P(C\mid D)P(D)=0.0792$\\
+Therefore, \underline{\underline{$7.92\%$}} of the families own both a dog and a cat.
+\item[b.] Again using the definition of conditional probability we have,\\
+$P(D\mid C)=\frac{P(C\cap D)}{P(C)}\implies P(D\mid C)=\frac{0.0792}{0.30}=0.264$\\
+Therefore, \underline{\underline{$26.4\%$}} of the families that own a cat also own a dog.
+\end{itemize}
+
+%%
+\subsection*{Problem 7}
+Let $E\subset F$. Express the following probabilities as simply as possible
+\begin{center}
+$P(E\mid F), P(E\mid F^c), P(F\mid E^c)$
+\end{center}
+{\bf \underline{Solution}}:\\
+$P(E\mid F)=\frac{P(E\cap F)}{P(F)}\implies P(E\mid F)=\underline{\underline{\frac{P(E)}{P(F)}}}$, as $E\subset F\implies E\cap F=E$\\
+$P(E\mid F^c)=\frac{P(E\cap F^c)}{P(F^c)}\implies P(E\mid F^c)=\underline{\underline{0}}$, as $E\subset F\implies E\cap F^c=\emptyset$\\
+$P(F\mid E^c)=\frac{P(F\cap E^c)}{P(E^c)}\implies P(F\mid E^c)=\underline{\underline{\frac{P(F)-P(E)}{1-P(E)}}}$, as $F\cap E^c= F\setminus E$
+
+%%
+\subsection*{Problem 10}
+The probability of getting a head on a single toss of a coin is $p$. Suppose that $A$ starts and continues to flip the coin until a tail shows up, at which point $B$ starts flipping. Then $B$ continues to flip until a tail comes up, at which point $A$ takes over, and so on. Let $P_{n,m}$ denote the probability that $A$ accumulates a total of $n$ heads before $B$ accumulates $m$. Show that
+\begin{center}
+$P_{n,m}=pP_{n-1,m}+(1-p)(1-P_{m,n})$
+\end{center}
+{\bf \underline{Solution}}:\\
+Using Bayes' formula we can represent $P_{n,m}$ using the outcome of the first coin toss.\\
+\underline{Case 1}: the first coin toss by $A$ is heads\\
+The probability of this happening is $p$ as this event is independent, now as $A$ is in the lead with one head, he needs $n-1$ more heads before $B$ accumulates $m$ heads, and using the notation defined the probability of this occurring is $P_{n-1,m}$.\\
+\underline{Case 2}: the first coin toss by $A$ is tails\\
+The probability of this happening is $1-p$ as this event is independent, now as $A$ is behind $B$ as its not his turn anymore. For $A$ to accumulate $n$ heads before $B$ accumulates $m$ heads, $B$ must not accumulate $m$ heads before $A$ accumulates $n$ heads, again we can use the notation as effectively $B$ is going first. Therefore the probability of $B$ not reaching his goal is $1-P_{m,n}$.\\
+As these are the only possible cases, we can now use Bayes' formula to state the following, $$P_{n,m}=pP_{n-1,m}+(1-p)(1-P_{m,n})$$
+
+\end{document}

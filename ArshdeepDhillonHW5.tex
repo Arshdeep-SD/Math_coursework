@@ -1,0 +1,139 @@
+\documentclass[11pt,letter paper]{report}
+\usepackage{amssymb,amsfonts,amsmath,color,graphicx}
+\usepackage{tikz} 
+
+\voffset=-3cm
+\hoffset=-2.25cm
+\textheight=24cm
+\textwidth=17.25cm
+
+\begin{document}
+\noindent{\em Arshdeep Dhillon \hfill{September 9, 2019}}
+
+\begin{center}
+{\bf \Large Homework 5} 
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+%
+\section*{Problem Set 9}
+
+%%
+\subsection*{Problem 1}
+Compute $E[X^2]$ for an exponential random variable $X$ with parameter $\lambda$. \\[0.1cm]
+{\bf \underline{Solution}}:\\
+As $X$ is a exponential random variable $$f_X(x)=\begin{cases}0, & x\le0\\
+\lambda e^{-x\lambda}, & x>0\\
+\end{cases}$$
+By definition of expectation
+$$E[X^2]=\int_{-\infty}^{\infty}x^2f_X(x)dx\\
+\implies E[X^2]=\int_{0}^{\infty}x^2\lambda e^{-\lambda x}$$
+By integration by parts
+$$\int_{0}^{\infty}x^2\lambda e^{-x\lambda x}=-x^2e^{-\lambda x}-\frac{2}{\lambda}xe^{-\lambda x}-\frac{2e^{-\lambda x}}{\lambda^2}\bigg|_0^{\infty}=\frac{2}{\lambda^2}$$
+Therefore, $$E[X^2]=\underline{\underline{\frac{2}{\lambda^2}}}$$
+
+%%
+\subsection*{Problem 2}
+A bus travels between the two cities $A$ and $B$, which are $100$ miles apart. If the bus has a breakdown, the distance from the breakdown to city $A$ has a uniform distribution over $(0,100)$. There is a bus service station in city $A$, in $B$, and in the center of the route between $A$ and $B$. It is suggested that it would be more efficient to have the three stations located $25$, $50$, and $75$ miles, respectively, from $A$. Do you agree? Why? \\[0.1cm]
+{\bf \underline{Solution}}:\\
+Let $X$ be a random variable that measures the distance between the location of the breakdown and city $A$. $X$ is uniformly distributed from $(0,100)$. The expected value of $X$ tells the expected distance of a breakdown from city $A$. 
+$$f_X(x)=\frac{1}{100-a}\implies E[X]=\int_0^100\frac{x}{100}dx\implies E[X]=\frac{100}{2}$$
+Therefore, it will be more beneficial to have a single service station at $50$ miles from city $A$ as it is more likely that a breakdown occurs at this location and building the other two stations will not be beneficial as the station at $50$ miles will be servicing the majority of the busses. 
+
+%%
+\subsection*{Problem 3}
+A man aiming at a target receives $10$ points if his shot is within $1$ inch of the target, $5$ points if it is between $1$ and $3$ inches of the target, and $3$ points if it is between $3$ and $5$ inches of the target. Find the expected number of points scored if the distance from the shot to the target is uniformly distributed between $0$ and $10$. \\[0.1cm]
+{\bf \underline{Solution}}:\\
+Let $X$ be a random variable that measures the distance between the target and the location of where the shot hits, $X$ is uniformly distributed from $[0,10]$. As the distance between the target and the shot determines the points earned, i.e. the points are a function of the random variable $X$, let this function be $g(X)$.
+$$g(X)=\begin{cases}10, & 0\le x\le 1\\
+5, & 1< x\le 3\\
+3, & 3< x\le 5\\
+0, & 5< x\le 10\\
+\end{cases}$$
+The expected number of points therefore are given by, $E[g(X)]$.As seen in lecture 22, 
+$$E[g(X)]=\int_{-\infty}^{\infty}g(X)f_Xdx\implies
+E[g(X)]=\int_{0}^{10}g(X)\frac{1}{10}dx\implies$$
+$$E[g(X)]=\int_0^1(1)\frac{1}{10}dx+E[g(X)]+\int_3^5(5)\frac{1}{10}dx+E[g(X)]=\int_3^5(3)\frac{1}{10}dx+E[g(X)]+\int_5^10(0)\frac{1}{10}dx$$
+$$\therefore E[g(X)]=\frac{10\times 1}{10}+\frac{5\times 2}{10}+\frac{3\times 2}{10}+0=2.6$$
+Thus, the expected number of points scored is $\underline{\underline{2.6}}$.
+
+%%
+\subsection*{Problem 4}
+In $10,000$ independent tosses of a coin, the coin landed on heads $5800$ times. Is it reasonable to assume that the coin is not fair? \\[0.1cm]
+{\bf \underline{Solution}}:\\
+Let $X$ be a random variable that is equal to the number of heads that show up when a fair coin is tossed, $X\sim B(10000,0.5)$. Therefore, the following quantities are known, 
+$$E[X]=np=10000\times 0.5=5000$$
+$$\operatorname{Var}(X)=np(1-p)=10000\times 0.5\times0.5=2500\implies 
+\sigma\text{(Standard Deviation)}=\sqrt{\operatorname{Var}(X)}=50$$
+The standard deviation of a variable gives the expected deviation from the mean for random variable, therefore, after taking into account the standard deviation, the expected value of $X$ must between $4950$ and $5050$ for a fair coin. But, the number of heads that are obtained($5800$) is beyond this range and thus it is not reasonable to assume that the coin flipped was fair.
+
+%%
+\subsection*{Problem 6}
+If $X$ is uniformly distributed over $(0,1)$, find the density function of $Y=e^X$. \\[0.1cm]
+{\bf \underline{Solution}}:\\
+$Y=e^X\implies \ln{Y}=X$\\
+$f_X(x)=\begin{cases}
+1, & x\in (0,1)\\
+0, & x\not\in (0,1)\\
+\end{cases}\implies F_X(x)=x, x\in(0,1)$\\
+$F_Y(y)=P(Y\le y)\implies P(e^X\le y)\implies P(X\le \ln{y})$\\
+$\implies F_Y(y)=F_X(\ln{y})\implies f_Y(y)=\frac{1}{y}f_X(\ln{y})$
+$$\therefore f_X(x)=\begin{cases}
+\frac{1}{y}, & y\in (1,e)\\
+0, & y\not\in (1,e)\\
+\end{cases}$$
+
+%%
+\subsection*{Problem 8}
+Let $X$ be a random variable that takes on values between $0$ and $c$. That is, $P(0\le X\le c)=1$. Show that
+$$\operatorname{Var}(X)\leq \frac{c^2}{4}$$
+{\bf \underline{Solution}}:\\
+Proving Chebyshev inequality for continuous random variables,
+$$\operatorname{Var}\left(X\right)=\int_{-\infty}^{\infty}\left(x-\mu_x\right)^2p_Xdx$$
+$$\implies \operatorname{Var}\left(X\right)\ge\int_{-\infty}^{-(\varepsilon+\mu_X)}\left(x-\mu_x\right)^2p_Xdx+\int^{\infty}_{(\varepsilon+\mu_X)}\left(x-\mu_x\right)^2p_Xdx$$
+$$\implies \operatorname{Var}\left(X\right)\ge\varepsilon^2\left(\int_{-\infty}^{-(\varepsilon+\mu_X)}p_Xdx+
+\int^{\infty}_{(\varepsilon+\mu_X)}p_Xdx\right)=\varepsilon^2 P\left(\left\{\lvert X-\mu_X\rvert\ge\varepsilon \right\}\right)$$
+$$\therefore P\left(\left\{\lvert X-\mu_X\rvert\ge\varepsilon \right\}\right)\le \frac{\operatorname{Var}(X)}{\varepsilon^2}$$
+If $\operatorname{Var}(X)=0$ is the trivial case as,
+$$0<\frac{c^2}{4}$$
+Therefore, for $\operatorname{Var}(X)\not=0$, using Chebyshev inequality with, $\varepsilon=\frac{2\operatorname{Var}(X)}{c}$, 
+$$P\left(\left\{\lvert X-\mu_X\rvert\ge\varepsilon \right\}\right)\le \frac{\operatorname{Var}(X)}{\varepsilon^2}\implies 
+P\left(\left\{\lvert X-\mu_X\rvert\ge\varepsilon \right\}\right)\le \frac{c^2}{4\operatorname{Var}(X)}$$
+As $X$ could be any random variable this $P\left(\left\{\lvert X-\mu_X\rvert\ge\varepsilon \right\}\right)$ value could be anything between $0$ and $1$. Therefore, in the edge case where $P\left(\left\{\lvert X-\mu_X\rvert\ge\varepsilon \right\}\right)=1$, 
+$$1\le \frac{c^2}{4\operatorname{Var}(X)}\implies \operatorname{Var}(X)\le \frac{c^2}{4}$$
+
+%%
+\subsection*{Problem 9}
+If $X$ is an exponential random variable with mean $\frac{1}{\lambda}$, show that
+$$E[X^k]=\frac{k!}{\lambda^k},\: k=1,2,\dots$$
+{\bf \underline{Solution}}:\\
+$E[X^k]=\int x^kf_X(x)dx\implies E[X^k]=\int x^k\lambda e^{-\lambda x}$\\
+Using integration by parts, 
+$$E[X^k]=-x^ke^{-\lambda x}-\int kx^{k-1}e^{-\lambda x}\implies E[X^k]=-x^ke^{-\lambda x}\bigg|_0^{\infty}+\int \frac{k}{\lambda}x^{k-1}e^{-\lambda x}$$
+$$-x^ke^{-\lambda x}\bigg|_0^{\infty}=0 \text{ by L'Hôpital's rule as}$$
+$$lim_{x\to \infty}\frac{x^{k-1}}{e^{-\lambda x}}=lim_{x\to \infty}\frac{k!}{\lambda^k e^{\lambda x}}=0\text{ after taking the limit multiple times}$$
+$$\therefore E[x^k]=\frac{k}{\lambda}E[x^{k-1}]$$
+Using this property recursively, 
+$$E[X^k]=\frac{k}{\lambda}E[x^{k-1}]=\frac{k(k-1)}{\lambda^2}E[X^{k-2}]\dots=\frac{k!}{\lambda^k}\text{ as } E[X]=\frac{1}{\lambda}$$
+$$\therefore E[x^k]=\frac{k!}{\lambda^k}$$
+
+%%
+\subsection*{Problem 10}
+If $X$ is an exponential random variable with parameter $\lambda$, and $c>0$, show that $cX$ is exponential with parameter $\frac{\lambda}{c}$. \\[0.1cm]
+{\bf \underline{Solution}}:\\
+Let $Y$ be a random variable such that $Y=cX$, 
+$$P(Y\le y)=P(cX\le y)=P(X\le \frac{y}{c})\implies F_X(\frac{y}{c})$$
+$$\therefore F_Y(y)=F_X(\frac{y}{c})\implies f_Y(y)=\frac{1}{c}f_X(\frac{y}{c})$$
+As $X$ is a exponential variable, 
+$$f_Y(y)=\begin{cases}
+\frac{\lambda}{c} e^{-\lambda \frac{y}{c}}, & y\in [0,\infty)\\
+0, & y\not\in [0,\infty)\\
+\end{cases}$$
+This can be rewritten as, 
+$$f_X(x)=\begin{cases}
+\frac{\lambda}{c} e^{-\lambda x}, & x\in [0,\infty)\\
+0, & x\not\in [0,\infty)\\
+\end{cases}$$
+Therefore, $cX$($Y$), is a exponential random variable with parameter $\frac{\lambda}{c}$.
+\end{document}

@@ -1,0 +1,115 @@
+\documentclass[11pt,letter paper]{report}
+\usepackage{amssymb,amsfonts,amsmath,color,graphicx}
+\usepackage{tikz} 
+
+\voffset=-3cm
+\hoffset=-2.25cm
+\textheight=24cm
+\textwidth=17.25cm
+
+\begin{document}
+\noindent{\em Arshdeep Dhillon \hfill{August 12, 2019}}
+
+\begin{center}
+{\bf \Large Homework 1} 
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+%
+\section*{Problem Set 1}
+
+%%
+\subsection*{Problem 1}
+How many plate numbers can be created in California format {\it DLLLDDD}, where {\it D} stands for digit and {\it L} stands for letter? What if no repetitions are allowed in the digits?\\[0.1cm]
+{\bf \underline{Solution}}:\\ 
+As the order in which these letters and digits are arranged matters the elements need to be permuted after they are selected. As letters and number both can be repeated there are $26^3$ ways to choose and arrange $3$ letters and $10^4$ ways to choose and arrange $4$ numbers. By the Fundamental Counting Principle, the total number of ways to form one plate numbers is: 
+$$26^3*10^4=\underline{\underline{175,760,000}}$$
+
+As numbers cannot be repeated we first need to select $4$ digits from the $10$ digits, which is done in $\binom{10}{4}$ and then they need to be permuted which is done in $4!$ ways. Now by the Fundamental Counting Principle, the total number of ways to form one plate numbers is: 
+$$\binom{10}{4}\times 4!\times 26^3=\underline{\underline{88,583,040}}$$
+
+%%
+\subsection*{Problem 3}
+How many letter arrangements can be made from the letters of the word {\it Iowa}? How about from the letters of {\it Connecticut}?\\[0.1cm]
+{\bf \underline{Solution}}:\\
+{\bf \it Iowa}: There are $4$ unique letters in the word 'Iowa', being $\lbrace i, o, w, a\rbrace$. To create a letter combination from $4$ unique letters the letter need to be permuted, and there are $4!=\underline{\underline{24}}$ ways to do so.\\
+{\bf \it Connecticut}: There are $7$ unique letters in the word 'Connecticut', being $\lbrace c, o, n, e, t, i, u\rbrace$ and the letters $(c, n, t)$ are repeated $(3, 2, 2)$ times each. To create a letter combination from $11$ letters with repeats need to be permuted, and there are there are $\binom{11}{3,2,2}=\underline{\underline{1,663,200}}$ ways to do so.
+
+%%
+\subsection*{Problem 6}
+If you need to split a class of 32 students in 8 groups of 4, in how many ways can you do it?\\[0.1cm]
+{\bf \underline{Solution}}:\\
+There are $32!$ ways to order $32$ students in, starting from the first student we can group $4$ consecutive students into one group but doing this gives us repeats as all permutations where a group stays together get counted multiple times. For a group of $4$ students there are $4!$ ways of permuting them, to correct out count these permutation need to be removed and there are $8$ groups this has to be done for each group. Therefore, the total number of ways in which $32$ students can be split into groups of $4$ are $\underline{\underline{\dfrac{32!}{4!^8}\approx2.39\times10^24}}$.
+
+%%
+\subsection*{Problem 10}
+A total of 8 representatives need to be chosen from a group of 40 students, of which 24 are female and 16 are male. In how many ways can this be done? What if we require that there be at least 3 female and 3 male representatives?\\[0.1cm]
+{\bf \underline{Solution}}:\\
+There are $40$ students in total to make a group of $8$ students we need to select $8$ students from $40$ students, this is done in $\underline{\underline{\binom{40}{8}=76,904,685}}$ ways.\\
+To make a group of $8$ students where there are at least $3$ boys and $3$ girls, to do so first we must select the $3$ guaranteed boys in the group and the $3$ girls in the group, this is done in $\binom{24}{3}$ and $\binom{16}{3}$ ways.\\
+Once this is done the rest of the $2$ students of the group, which is done in $\binom{34}{2}$ as there are $34$ students to choose the other $2$ from. Therefore, by the Fundamental Counting Principle, the total number of ways to form a group of $8$ people with at least $3$ boys and $3$ girls is $\underline{\underline{\binom{24}{3}\binom{16}{3}\binom{34}{2}=635,859,840}}$.  
+
+%
+\section*{Problem Set 2}
+
+%%
+\subsection*{Problem 1}
+An urn contains 3 balls: 1 red, 1 green, and 1 blue. Consider an experiment that consists of taking 1 ball from the urn, replacing it in the box, and drawing a second ball. Describe the sample space of this experiment and for the experiment obtained not replacing the first ball in the urn.\\[0.1cm]
+{\bf \underline{Solution}}:\\
+Using the letters $R,G,B$ to denote the color of the ball drawn, each outcome can be represented as a tuple where the first element indicates the color of the first ball and the second element denotes the color of the second ball drawn, ex. $(R,R)$.\\
+In the experiment where the balls are drawn with replacement the sample space, $S_1$, can have a tuple where the both the elements are the same as we replace the ball after we first draw it. Whereas in the second experiment this is not possible as the ball is not replaced, therefore this sample space, $S_2$, will not contain these outcomes and will contain all the other outcomes present in $S_1$.
+$$S_1=\lbrace(R,R),(R,G),(R,B),(G,R),(G,G),(G,B),(B,R),(B,G),(B,B)\rbrace$$
+$$S_1=\lbrace(R,G),(R,B),(G,R),(G,B),(B,R),(B,G)\rbrace$$
+
+
+%%
+\subsection*{Problem 4}
+A hospital administrator codes incoming patients suffering heart disease according to whether they have insurance (code 1 if they do and 0 if they do not) and based on their condition, which can be rated as good G, fair F, or serious S. Consider an experiment that consists of producing codes for such a patient.
+\begin{itemize}
+\item[a.] Give the sample space of this experiment.
+\item[b.] Let $S$ be the event that the patient is in serious condition and list all outcomes in $S$. 
+\item[c.] Let $U$ be the event that the patient is uninsured and all outcomes in $U$. 
+\item[d.] List the outcomes in $S^C \cup U$.
+\end{itemize}
+{\bf \underline{Solution}}:
+\begin{itemize}
+\item[a.] Each event can be thought of as giving us two pieces of information, does the patient have insurance and their condition. Each element can be represented as (insurance,condition). Therefore, the sample space is $\lbrace(0,G),(0,F),(0,S),(1,G),(1,F),(1,S)\rbrace$.
+\item[b.] The event $S$ includes all outcomes where the patient is in serious condition, the only varying information is whether they have insurance or not. Therefore, $S=\lbrace(0,S),(1,S)\rbrace$. 
+\item[c.] The event $U$ include all outcomes where the patient does not have insurance, this include all the conditions that the patient may be in. Therefore, $U=\lbrace(0,G),(0,F),(0,S)\rbrace$.
+\item[d.] The event $S^C$ has all events in the sample space which do not list the condition as serious and the event $U$ has only one outcome which has the condition listed as serous, $(0,S)$. Therefore, the event $S^C\cup U=\lbrace(0,G),(0,F),(0,S),(1,G),(1,F)\rbrace$.
+\end{itemize}
+
+%%
+\subsection*{Problem 6}
+At a summer camp three activities are offered: tennis, swimming, and archery. The courses are open to the 120 summer camp participants. There are 31, 24, and 17 in these activities, respectively. There are 4 participants in all activities, 11 in tennis and swimming, 9 in tennis and archery, 7 in swimming and archery. 
+\begin{itemize}
+\item[a.] If a participant is chosen at random, what is the probability that he or she is taking part exactly one activity?
+\item[b.] If a participant is chosen at random, what is the probability that he or she is taking part in no activity?
+\item[c.] If two participants are chosen at random, what is the probability that they are both taking part in exactly one activity?
+\end{itemize}
+{\bf \underline{Solution}}:
+\begin{itemize}
+\item[a.] First the number of participants in each activity must be found:
+\begin{itemize}
+\item number of participants participating only in tennis $=31-11-9+4=\underline{\underline{15}}$ 
+\item number of participants participating only in swimming $=24-11-7+4=\underline{\underline{10}}$ 
+\item number of participants participating only in archery $=17-9-7+4=\underline{\underline{5}}$ 
+\end{itemize}
+Therefore, the probability is $P=\frac{15+10+5}{120}=\frac{1}{4}=\underline{\underline{0.25}}$.
+\item[b.] First the number of participants that participate in at least one activity and then we subtract this value form the total of $120$ participants. Participants in no activity $=120-(31+24+17-11-9-7+4)=71$. Therefore, the probability is $\underline{\underline{\frac{71}{120}\approx0.592}}$. 
+\item[c.] As seen in part {\bf a} there are $30$ participants in at only one activity, so $2$ people must be chosen from this set of and the sample space is selecting $2$ people from $120$ people. The number of ways to do so are $\binom{30}{2}$ and $\binom{120}{2}$. Therefore, the probability is $\underline{\underline{\dfrac{\binom{30}{2}}{\binom{120}{2}}\approx0.061}}$.
+\end{itemize}
+
+%%
+\subsection*{Problem 9}
+If $P(E)=0.9$ and $P(F)=0.8$, show that $P(E\cap F)\ge 0.7$. In general,prove {\bf Bonferroni's inequality}, i.e., that $$P(E\cap F)\ge P(E)+P(F)-1$$\\[0.1cm]
+{\bf \underline{Solution}}:\\
+$P(S)=1$, {\it(P2) Task 6 Lectures 2,3 Worksheet}\\
+$P(E\cup F)=P(E)+P(F)-P(E\cap F)$, {\it Task 6 Lectures 2,3 Worksheet}\\
+$E\cup F\in S\implies P(E\cup F)\le 1$, {\it(P1) Task 6 Lectures 2,3 Worksheet}\\
+$\therefore 1\ge P(E)+P(F)-P(E\cap F)\implies P(E\cap F)\ge P(E)+P(F)-1$, hence proven.\\
+Using {\bf Bonferroni's inequality} for $P(E)=0.9$ and $P(F)=0.8$, we get $$P(E\cap F)\ge 0.9+0.8-1$$
+$$\implies P(E\cap F)\ge 0.7$$
+
+\end{document}
